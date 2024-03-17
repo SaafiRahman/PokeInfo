@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale=1.0>
+        <title>PokeInfo</title>
+        <link href="{{ url_for('static', filename='styles/style.css')}} rel=" rel="stylesheet" />
+    </head>
+
+    <body>
+        <h1>Get some pokeinfo</h1>
+        <form action="/search">
+            <input type="text" id="search" name="search" />
+            <button type="submit">Search!</button>
+        </form>
+    </body>
+<html>
