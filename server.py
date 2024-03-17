@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from getPokemon import get_pokemon
+from getPokemon import get_pokemon, get_pokemon_names
 from waitress import serve
 
 app = Flask(__name__)
@@ -12,8 +12,13 @@ def index():
 
 @app.route('/search')
 def search_mon():
-    pokemon = request.args.get('search')
-    poke_data = get_pokemon(pokemon)
+    pokemon_name = request.args.get('search')
+    if not pokemon_name:
+        return "No Pokemon name provided."
+
+    poke_data = get_pokemon(pokemon_name)
+    if not poke_data:
+        return "Pokemon not found."
 
     return render_template(
         "pokemon.html",
