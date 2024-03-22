@@ -21,3 +21,24 @@ input, button {
     padding: 1rem;
     border-radius: 10px;
 }
+
+.search-container {
+    position: relative; /* Essential */
+    display: inline-block; /* Adjust this based on your layout */
+    width: 100%; /* Or width of the input field + button */
+}
+
+
+#suggestions {
+    position: absolute;
+    top: 100%; /* Right below the input field */
+    left: 0;
+    color: black;
+    width: 100%; /* Assuming you want it as wide as the search-container */
+    background-color: #fff; /* So it stands out against any page background */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Optional: Adds depth */
+    z-index: 1; /* Ensures it's above other content */
+    max-height: 300px; /* Optional: Adjust based on your needs */
+    overflow-y: auto; /* For scrolling */
+    border: 1px solid #ddd; /* Optional: Adds definition */
+}

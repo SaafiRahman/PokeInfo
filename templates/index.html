@@ -2,16 +2,20 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width" initial-scale=1.0>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PokeInfo</title>
         <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />
     </head>
 
     <body>
         <h1>Get some pokeinfo</h1>
-        <form action="/search">
-            <input type="text" id="search" name="search" />
-            <button type="submit">Search!</button>
-        </form>
+        <div class="search-container">
+            <form action="/search">
+                <input type="text" id="search" name="search" />
+                <button type="submit">Search!</button>
+            </form>
+            <div id="suggestions"></div>
+        </div>
+        <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
     </body>
-<html>
+</html>
