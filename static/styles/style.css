@@ -70,18 +70,29 @@ body, html {
 .name-box {
     height: 30%; /* This will give the name box half of the vertical space */
     display: flex;
-    Align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
 }
 
 .name-box h1 {
     font-size: 72px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
 }
 
 .stats-box {
     height: 70%; /* This will give the stats box half of the vertical space */
     color: white;
+}
+
+.stats-box h2 {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.stats-box ul {
+    font-size: 20px;
 }
 
 /* Add responsive adjustments as needed */
@@ -95,3 +106,35 @@ body, html {
         height: auto; /* Allows the divs to grow based on content */
     }
 }
+
+.stat-container {
+    display: flex; /* Establishes a flex container */
+    align-items: flex-start; /* Aligns children to the start of the flex container */
+    gap: 20px; /* Optional: adds space between the flex items */
+}
+
+.base-stats, .stat-bar {
+    flex: 1; /* Gives the divs equal width within the container */
+}
+
+.types {
+    display: flex;
+}
+.type-normal { color: #A8A77A; }
+.type-fire { color: #EE8130; }
+.type-water { color: #6390F0; }
+.type-electric { color: #F7D02C; }
+.type-grass { color: #7AC74C; }
+.type-ice { color: #96D9D6; }
+.type-fighting { color: #C22E28; }
+.type-poison { color: #A33EA1; }
+.type-ground { color: #E2BF65; }
+.type-flying { color: #A98FF3; }
+.type-psychic { color: #F95587; }
+.type-bug { color: #A6B91A; }
+.type-rock { color: #B6A136; }
+.type-ghost { color: #735797; }
+.type-dragon { color: #6F35FC; }
+.type-dark { color: #705746; }
+.type-steel { color: #B7B7CE; }
+.type-fairy { color: #D685AD; }

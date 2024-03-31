@@ -23,10 +23,35 @@
         <div class="info-container">
             <div class="name-box">
                 <h1>{{ title }}</h1>
+                <span class="types">
+                    {% for type in types %}
+                       <h2 class="type-{{ type.lower() }}"> {{ type }} </h2>
+                    {% endfor %}
+                </span>
             </div>
+            
             <div class="stats-box">
-                <h2>Abilities:<h2>
-                <p>{{ ability }} </p>
+                <h2>Abilities:</h2>
+                <ul>
+                    {% for ability in abilities %}
+                        <li> {{ ability }} </li>
+                    {% endfor %}
+                </ul>
+                <div class="stat-container">
+                    <div class="base-stats">
+                        <h3>hp: </h3>
+                        <h3>atk: </h3>
+                        <h3>def: </h3>
+                        <h3>spa: </h3>
+                        <h3>spd: </h3>
+                        <h3>spe: </h3>
+                    </div>
+                    <div class="stat-bar">
+                        {% for stat in stats %}
+                            <h3>{{ stat }}</h3>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

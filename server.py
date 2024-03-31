@@ -24,11 +24,17 @@ def search_mon():
     if not poke_data:
         return "Pokemon not found."
 
+    abilities = [ability['ability']['name'] for ability in poke_data["abilities"]]
+    types = [type['type']['name'] for type in poke_data['types']]
+    stats = [stat['base_stat'] for stat in poke_data['stats']]
+    
     return render_template(
         "pokemon.html",
         title = poke_data["species"]["name"],
-        ability = poke_data["abilities"][0]['ability']['name'],
-        sprite = poke_data["sprites"]["front_default"]
+        abilities = abilities,
+        types = types,
+        sprite = poke_data["sprites"]["front_default"],
+        stats = stats
     )
 
 @app.route('/suggestions')
