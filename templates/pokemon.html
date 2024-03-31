@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ title }} info</title>
-        <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />
-    </head>
-
-    <body>
-        <h1>{{ title }} info</h1>
-        <p>{{ ability }} ability</p>
-        <img src="{{ sprite }}" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} info</title>
+    <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
         <div class="search-container">
             <form action="/search">
                 <input type="text" id="search" name="search" />
@@ -19,7 +15,22 @@
             </form>
             <div id="suggestions"></div>
         </div>
+    </nav>
+    <div class="content">
+        <div class="sprite-box">
+            <img src="{{ sprite }}" alt="{{ title }}" />
+        </div>
+        <div class="info-container">
+            <div class="name-box">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="stats-box">
+                <h2>Abilities:<h2>
+                <p>{{ ability }} </p>
+            </div>
+        </div>
+    </div>
 
-        <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
-    </body>
-<html>
+    <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
+</body>
+</html>

@@ -8,14 +8,17 @@
     </head>
 
     <body>
+        <nav class="navbar">
+            <div class="search-container">
+                <form action="/search">
+                    <input type="text" id="search" name="search" />
+                    <button type="submit">Search!</button>
+                </form>
+                <div id="suggestions"></div>
+            </div>
+        </nav>
         <h1>Get some pokeinfo</h1>
-        <div class="search-container">
-            <form action="/search">
-                <input type="text" id="search" name="search" />
-                <button type="submit">Search!</button>
-            </form>
-            <div id="suggestions"></div>
-        </div>
+
         <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
     </body>
 </html>

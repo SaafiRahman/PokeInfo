@@ -1,25 +1,23 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    padding: 2rem;
-    background-color: #333;
-    color: whitesmoke;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    font-size: 2rem;
+body, html {
+    background-color: gray;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif; /* You can change the font-family as needed */
 }
 
-input, button {
-    font-size: 2rem;
-    padding: 1rem;
-    border-radius: 10px;
+.navbar {
+    width: 100%;
+    background-color: #161616;
+    color: white;
+    padding: 20px 20px; 
+    box-sizing: border-box; /* Ensures padding doesn't add to the total width */
+
 }
 
 .search-container {
@@ -28,17 +26,72 @@ input, button {
     width: 100%; /* Or width of the input field + button */
 }
 
-
 #suggestions {
     position: absolute;
     top: 100%; /* Right below the input field */
     left: 0;
     color: black;
-    width: 100%; /* Assuming you want it as wide as the search-container */
+    width: 9%; /* Assuming you want it as wide as the search-container */
     background-color: #fff; /* So it stands out against any page background */
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Optional: Adds depth */
     z-index: 1; /* Ensures it's above other content */
     max-height: 300px; /* Optional: Adjust based on your needs */
     overflow-y: auto; /* For scrolling */
     border: 1px solid #ddd; /* Optional: Adds definition */
+}
+
+
+.content {
+    display: flex;
+    height: calc(100% - 48px); /* Adjust the value based on the navbar's height */
+}
+
+.sprite-box {
+    flex-basis: 33.33%; /* This will give the left box one-third of the horizontal space */
+    height: calc(100% - 48px); /* Height is the remainder of the screen minus the navbar */
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+.sprite-box img {
+    width: 80%;
+    height: auto;   
+}
+
+.info-container {
+    flex-basis: 66.67%; /* This will give the right container two-thirds of the horizontal space */
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    height: calc(100% - 48px); /* Height is the remainder of the screen minus the navbar */
+}
+
+.name-box {
+    height: 30%; /* This will give the name box half of the vertical space */
+    display: flex;
+    Align-items: center;
+}
+
+.name-box h1 {
+    font-size: 72px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.stats-box {
+    height: 70%; /* This will give the stats box half of the vertical space */
+    color: white;
+}
+
+/* Add responsive adjustments as needed */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .sprite-box, .name-box, .stats-box {
+        flex-basis: 100%;
+        height: auto; /* Allows the divs to grow based on content */
+    }
 }
