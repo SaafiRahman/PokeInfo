@@ -38,19 +38,37 @@
                     {% endfor %}
                 </ul>
                 <div class="stat-container">
-                    <div class="base-stats">
-                        <h3>hp: </h3>
-                        <h3>atk: </h3>
-                        <h3>def: </h3>
-                        <h3>spa: </h3>
-                        <h3>spd: </h3>
-                        <h3>spe: </h3>
-                    </div>
+                    <span class="stat-title">Base-Stats</span>
+                {% for number in range(6) %}
                     <div class="stat-bar">
-                        {% for stat in stats %}
-                            <h3>{{ stat }}</h3>
-                        {% endfor %}
+                        <span class="title">{{ statnames[number] }}</span>
+
+                        <div class="defaultbar">
+                            {% set stat_percent = basestats[number] / 255 * 100 %}
+                            {% if stat_percent <= 10 %}
+                                {% set bar_color = '#FF2727' %} 
+                            {% elif stat_percent <= 20 %}
+                                {% set bar_color = '#FF4949' %} 
+                            {% elif stat_percent <= 30 %}
+                                {% set bar_color = '#FFA935' %}
+                            {% elif stat_percent <= 40 %}
+                                {% set bar_color = '#FFDB57' %}
+                            {% elif stat_percent <= 50 %}
+                                {% set bar_color = '#9FFF45' %}
+                            {% elif stat_percent <= 70 %}
+                                {% set bar_color = '#5DFF2D' %}    
+                            {% else %}
+                                {% set bar_color = '#0FFF00' %} 
+                            {% endif %}
+                            
+                            <span class="bar" style="width: {{ stat_percent }}%; background-color: {{ bar_color }};">
+                                <span class="statnum" style="background-color: {{ bar_color }};">
+                                    {{ basestats[number] }}
+                                </span>
+                            </span>
+                        </div>
                     </div>
+                {% endfor %}
                 </div>
             </div>
         </div>

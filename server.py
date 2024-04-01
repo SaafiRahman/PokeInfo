@@ -26,7 +26,11 @@ def search_mon():
 
     abilities = [ability['ability']['name'] for ability in poke_data["abilities"]]
     types = [type['type']['name'] for type in poke_data['types']]
-    stats = [stat['base_stat'] for stat in poke_data['stats']]
+    basestats = []
+    statnames = []
+    for stat in poke_data['stats']:
+        basestats.append(stat['base_stat'])
+        statnames.append(stat['stat']['name'])
     
     return render_template(
         "pokemon.html",
@@ -34,7 +38,8 @@ def search_mon():
         abilities = abilities,
         types = types,
         sprite = poke_data["sprites"]["front_default"],
-        stats = stats
+        basestats = basestats,
+        statnames = statnames
     )
 
 @app.route('/suggestions')
