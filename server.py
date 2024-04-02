@@ -1,18 +1,62 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, flash, redirect, url_for
 from flask_cors import CORS
 from getPokemon import get_pokemon, get_pokemon_names
 from waitress import serve
+import mysql.connector
+import os
+import bcrypt
 
 
 app = Flask(__name__)
 CORS(app)
+
+app.secret_key = 'password'
+
+
+db_config = {
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'passwd': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME')
+}
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
     
+@app.route('/register-user', methods=['POST'])
+def registerUser():
+    username = request.form['username']
+    password = request.form['password'].encode('utf-8')
 
+    # Hash the password
+    hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+
+    # Connect to the database
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor()
+
+    try:
+        # Insert the new user into the database
+        cursor.execute(
+            "INSERT INTO users (username, password_hash) VALUES (%s, %s)",
+            (username, hashed)
+        )
+        conn.commit()
+        flash('Registration successful! Please log in.', 'success')
+        return redirect(url_for('index'))
+    except mysql.connector.Error as e:
+        # This will catch errors such as "Duplicate entry" and others
+        flash(str(e), 'danger')
+        return redirect(url_for('register'))
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 @app.route('/search')
 def search_mon():
