@@ -18,6 +18,9 @@
             </div>
         </nav>
         <h1>Get some pokeinfo</h1>
+        {% if username %}
+            <p> Hi, {{ username }}</p>
+        {% endif %}
 
         <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
     </body>

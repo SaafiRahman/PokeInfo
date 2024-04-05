@@ -1,4 +1,73 @@
+html, body {
+    height: 100%; /* Ensures the body can stretch to the full height of the viewport */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+}
+
+
 body {
+    display: flex;
     justify-content: center;
     align-items: center;
+    background-color: gray;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.box .warning {
+    display: block; 
+    text-align: center; 
+    margin-top: 10px; 
+    color: red;
+}
+.box a {
+    display: block; 
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+.box {
+        max-width: 500px;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;    
+        display: block;
+}
+
+.box label, .box input { 
+    display: block; 
+    margin-bottom: 10px; 
+    width: calc(100% - 40px);
+}
+
+.box form {
+    display: flex; /* Makes the form a flex container */
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items: center; /* Centers children horizontally in the container */
+    width: 100%; /* Ensures the form occupies the full width of its parent */
+}
+
+.box button {
+    border-radius: 15px;
+    margin-top: 10px; /* Optional: adds some space above the button */
+    margin-bottom: 10px; /* Keeps the space below the button */
+    margin-left: auto; /* Auto margin for horizontal centering */
+    margin-right: auto; /* Auto margin for horizontal centering */
+    padding: 5px; /* Adds some padding inside the button for better appearance */
+    width: auto; /* You might adjust this to fit your design, e.g., 50% to make the button wider */
+}
+
+.box input {
+    border-radius: 10px;
+}
+
+
+.box input, .box button {
+    padding: 5px;
+    
 }

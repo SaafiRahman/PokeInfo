@@ -10,15 +10,44 @@
     <body>
         <div class="box">
             <h1>Create Your Account</h1>
-            <form action="/register-user" method="POST">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form id="registrationForm" action="/register-user" method="POST">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" required />
 
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" required />
 
+                <label for="password">Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password" required />
+                <p id="error-message" style="color: red; display: none;">Passwords do not match.</p>
+
                 <button type="submit">Create Account</button>
             </form>
+            <a href="{{ url_for('login') }}">Already have an account? sign in instead</a>
         </div>
+
+        <script>
+            document.getElementById("registrationForm").addEventListener("submit", function(event) {
+                var password = document.getElementById("password").value;
+                var confirmPassword = document.getElementById("confirm_password").value;
+                var errorMessage = document.getElementById("error-message");
+            
+                if (password !== confirmPassword) {
+                    event.preventDefault();
+                    errorMessage.style.display = 'block';
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
+            </script>
     </body> 
 </html>
