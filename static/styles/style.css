@@ -11,13 +11,21 @@ body, html {
     font-family: Arial, sans-serif; /* You can change the font-family as needed */
 }
 
-register-link {
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This will vertically center align the navbar and history title */
+    padding-bottom: 10px;;
+}
+
+.register-link {
     color: white; /* Example color */
     padding: 10px; /* Example padding */
     text-decoration: none; /* Removes underline from links */
 }
 
 .navbar {
+    display: flex;
     width: 100%;
     background-color: #161616;
     color: white;
@@ -32,12 +40,18 @@ register-link {
     width: 100%; /* Or width of the input field + button */
 }
 
+.search-container input,
+.search-container button {
+    margin: 0;
+    /* Other styles */
+}
+
 #suggestions {
     position: absolute;
-    top: 100%; /* Right below the input field */
+    top: calc(100% - 20px); /* Adjust this value as needed */
     left: 0;
     color: black;
-    width: 9%; /* Assuming you want it as wide as the search-container */
+    width: 9.65%; /* Assuming you want it as wide as the search-container */
     background-color: #fff; /* So it stands out against any page background */
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Optional: Adds depth */
     z-index: 1; /* Ensures it's above other content */

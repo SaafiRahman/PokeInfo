@@ -10,8 +10,7 @@ import bcrypt
 app = Flask(__name__)
 CORS(app)
 
-app.secret_key = 'password'
-
+app.secret_key = os.urandom(16)
 
 db_config = {
     'host': os.getenv('DB_HOST'),
@@ -136,7 +135,8 @@ def search_mon():
         types = types,
         sprite = poke_data["sprites"]["front_default"],
         basestats = basestats,
-        statnames = statnames
+        statnames = statnames,
+        username = session.get('username')
     )
 
 @app.route('/suggestions')
